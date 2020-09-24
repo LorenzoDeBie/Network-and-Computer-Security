@@ -2,7 +2,14 @@
 
 \usepackage[a4paper, total={6in, 10in}]{geometry}
 \usepackage[dutch]{babel}
+\usepackage[hidelinks]{hyperref}
 
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sorting=none
+]{biblatex}
+\addbibresource{library.bib}
 
 \title{Network and Computer Security}
 \subtitle{Summary}
@@ -12,4 +19,96 @@
 \begin{document}
 \maketitle
 \tableofcontents
+
+\chapter{Introduction} \label{cha:introduction}
+\section{Security in the media} \label{sec:security-in-the-media}
+    \begin{itemize}
+        \item Security <=> User friendly: work of security personel goes unnoticed when everything is good, but they get blamed when things go wrong.
+        \item Users remains a security risk:
+            \begin{itemize}
+                \item Due to lack of knowledge: \citetitle{Rodriguez2014} \cite{Rodriguez2014}
+                \item Due to incompetence
+                \item Information can stell be shared non-digitally
+            \end{itemize}
+        \item Nobody is safe: \citetitle{Eeckhaut2014} \cite{Eeckhaut2014}
+        \item Privacy vs Security: sacrificing privacy so data can be used for security.
+            \begin{itemize}
+                \item \citetitle{Derix2013} \cite{Derix2013}
+                \item \citetitle{Follorou2013} \cite{Follorou2013}
+            \end{itemize}
+        \item Check yourself using \url{https://haveibeenpwned.com/}
+        \item Privacy vs Health: tracing apps in times of COVID-19
+        \item Journalists aren't alwasy exactly IT experts \rightarrow remain a critic, remain sceptic
+        \item Future trends: blockchains
+            \begin{itemize}
+                \item mainly used for data integrity through \textbf{public ledgers}
+                \item Used to log activity.
+                    \begin{itemize}
+                        \item Detect malicious operations, hackers, foreign surveillance, database modifications
+                        \item Equally important as access restrictions
+                    \end{itemize}
+            \end{itemize}
+        \item Future trends: cyber warface
+        \begin{itemize}
+            \item Nation wide actions to cause damage or disruption. Can include physical impact and/or harm to human persons
+            \item Interesting targets: traffic lights, electricity systems, water filtration, power plants
+            \item Stuxnet:
+                \begin{itemize}
+                    \item Worm that targeted Iranian nuclear facilities, damaging centrifuges and other hardware
+                    \item Most likely an American-Israeli cyberweapon
+                \end{itemize}
+            \item Petya: ransomware or state attack?
+                \begin{itemize}
+                    \item Focused strongly on Ukraine systems
+                    \item Made very little money
+                    \item Either very bugge, or very damaging by purpose: permanent removal of files, nuclear power plants, ministries, metros and banks offline, possible link with assassination of Maksym Shapoval
+                \end{itemize}
+            \item Future trends: IoT: \citetitle{Ford2013} \cite{Ford2013}
+        \end{itemize} 
+    \end{itemize}
+% end section Security in the media
+
+\section{Example Incidents} \label{sec:example-incidents}
+    \begin{itemize}
+        \item Ashley Madison (2015)
+        \item DNC email leak (2016)
+        \item Mirai (2016)
+        \item Twitter hack (2020)
+    \end{itemize}
+% end section Example Incidents
+
+\section{Why do we need security? Why Information Security?} \label{sec:why-do-we-need-security}
+    \begin{itemize}
+        \item Counterpart of securing material objects
+            \begin{itemize}
+                \item Material object have some \textbf{value}
+                \item Can be stolen or damaged
+                \item Cost for security/protection takes into account value and risk of theft/damage
+            \end{itemize}
+        \item Risk of threats against information security is \textbf{much} greater
+        \item Value of information sometimes hard to assess, best estimated by damage caused. Losses cannot be undone
+        \item Threats against information include:
+            \begin{itemize}
+                \item \textbf{Loss} of information
+                \item \textbf{Forged} information
+                \item \textbf{Unauthorised release} of information
+                \item \textbf{Repudiation} of information
+            \end{itemize}
+        \item Value of information systems hard to asses. Systems used to enable service \rightarrow damage when service unavailable or unreliable
+        \item Threats against information systems include:
+            \begin{itemize}
+                \item \textbf{Unavailability}/disruption of service
+                \item \textbf{Unauthorised acces} to service
+                \item Threats against exchanged information
+            \end{itemize}
+        \item Security measures for information systems:
+        \begin{itemize}
+            \item \textbf{Information Security}: encryption, virus scanners, firewalls\dots
+            \item Carry some cost (installation, maintenance, computation time)
+            \item dependent on risk and potential damage
+        \end{itemize}
+    \end{itemize}
+
+\printbibliography
+
 \end{document}
