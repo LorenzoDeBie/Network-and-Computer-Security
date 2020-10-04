@@ -117,159 +117,229 @@
 
 \chapter{Basic Concepts} \label{cha:basic-concepts}
 	\section{A security model} \label{sec:a-security⁻model}
-        \begin{figure}[h]
-            \centering
+		\begin{figure}[h]
+			\centering
 			\includegraphics[width=0.6\textwidth]{images/network-security-model.png}    
 		\end{figure}
 	% end sec:a-security⁻model
 
-    \section{Security Goals} \label{sec:security-goals}
-        Possible exam question: \textbf{Which security goals does this protocol fullfill?}
+	\section{Security Goals} \label{sec:security-goals}
+		Possible exam questions:
+		\begin{itemize}
+			\item \textbf{Which security goals does this protocol fullfill?}
+			\item \textbf{Which security goals per chapter?}
+		\end{itemize} 
 		\subsection{Confidentiality} \label{sub:confidentiality}
-            \begin{itemize}
-                \item Data can only be read by those who are allowed to read the data
-                \item Applications:
-                \begin{itemize}
-                    \item Communicating confidential data between branches of a corporation
-                    \item Passwords
-                    \item Storage of health data
-                \end{itemize}
-            \end{itemize}
-            \begin{figure}[h]
-                \centering
-                \begin{subfigure}{.40\textwidth}
-                    \centering
-                    \includegraphics[width=\linewidth]{images/data-confidentiality-threat.png}
-                    \caption{Passive attack by Carol: \textbf{eavesdropping} upon information channel}
-                    \label{fig:eavesdropping}
-                \end{subfigure}
-                \begin{subfigure}{.50\textwidth}
-                    \centering
-                    \includegraphics[width=\linewidth]{images/data-confidentiality-solution.png}
-                    \caption{Solution to eavesdropping}
-                    \label{fig:eavesdropping-solution}
-                \end{subfigure}
-            \end{figure}
-            
-            \subsubsection{Traffic-flow confidentiality} \label{subsub:traffic-flow-confidentiality}
-                \begin{itemize}
-                    \item Keeping secret who's communicating with whom
-                    \item Much harder to achieve than data confidentiality
-                    \item In \figurename{} \ref{fig:eavesdropping-solution} data confidentiality is OK, traffic-flow confidentiality is NOT OK: Carol can still see that Alice is communicating with Bob
-                \end{itemize}
-            % end subsub:traffic-flow-confidentiality
+			\begin{itemize}
+				\item Data can only be read by those who are allowed to read the data
+				\item Applications:
+				\begin{itemize}
+					\item Communicating confidential data between branches of a corporation
+					\item Passwords
+					\item Storage of health data
+				\end{itemize}
+			\end{itemize}
+			\begin{figure}[h]
+				\centering
+				\begin{subfigure}{.40\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{images/data-confidentiality-threat.png}
+					\caption{Passive attack by Carol: \textbf{eavesdropping} upon information channel}
+					\label{fig:eavesdropping}
+				\end{subfigure}
+				\begin{subfigure}{.50\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{images/data-confidentiality-solution.png}
+					\caption{Solution to eavesdropping}
+					\label{fig:eavesdropping-solution}
+				\end{subfigure}
+			\end{figure}
+			
+			\subsubsection{Traffic-flow confidentiality} \label{subsub:traffic-flow-confidentiality}
+				\begin{itemize}
+					\item Keeping secret who's communicating with whom
+					\item Much harder to achieve than data confidentiality
+					\item In \figurename{} \ref{fig:eavesdropping-solution} data confidentiality is OK, traffic-flow confidentiality is NOT OK: Carol can still see that Alice is communicating with Bob
+				\end{itemize}
+			% end subsub:traffic-flow-confidentiality
 
-            \subsubsection{Confidentiality vs Privacy} \label{subsub:confidentiality-vs-privacy}
-                Privacy is having the right to choose what information you give away.
-                It is a fundamental right, legally protected since long.
-                Not every confidentiality requirement involves privacy: intellectual property in a business requires confidentiality, no privacy.
-            % end subsub:confidentiality-vs-privacy
+			\subsubsection{Confidentiality vs Privacy} \label{subsub:confidentiality-vs-privacy}
+				Privacy is having the right to choose what information you give away.
+				It is a fundamental right, legally protected since long.
+				Not every confidentiality requirement involves privacy: intellectual property in a business requires confidentiality, no privacy.
+			% end subsub:confidentiality-vs-privacy
 		% end sub:confidentiality
 
-        \subsection{Authentication} \label{sub:authentication}
-            Authentication is related to \textbf{identification}: it is the \textit{electronic world} equivalent. \textit{Is the person at the other end of the communication who he claims he is?}
+		\subsection{Authentication} \label{sub:authentication}
+			Authentication is related to \textbf{identification}: it is the \textit{electronic world} equivalent. \textit{Is the person at the other end of the communication who he claims he is?}
 
-            Guaranteeing teh authenticity of a communication is based on:
-            \begin{itemize}
-                \item \textbf{Entity} authentication: distinguish each entity from another based on collection of data. Each entity has a unique identity.
-                \item \textbf{Attribute} authentication. Attribute = characteristic of an entity. Entities are often authenicated through authentication of some of its attributes. Do the communicating parties exhibit the characteristics they claim to have?
-                \item \textbf{Data-origin} authentication: does the data indeed originate from the specified source? Important to evaluate wether data is reliable (\textbf{Data Integrity} see \ref{sub:data-integrity}). Different from entity authentication: \textbf{no interaction with data source}.
-            \end{itemize}
-            \begin{figure}[h]
-                \centering
-                \begin{subfigure}{.40\textwidth}
-                    \centering
-                    \includegraphics[width=\linewidth]{images/authentication-threat.png}
-                    \caption{Threat}
-                    \label{fig:authentication-threat}
-                \end{subfigure}
-                \begin{subfigure}{.50\textwidth}
-                    \centering
-                    \includegraphics[width=\linewidth]{images/authentication-threat-solution.png}
-                    \caption{Solution}
-                    \label{fig:authentication-threat-solution}
-                \end{subfigure}
-            \end{figure}
+			Guaranteeing teh authenticity of a communication is based on:
+			\begin{itemize}
+				\item \textbf{Entity} authentication: distinguish each entity from another based on collection of data. Each entity has a unique identity.
+				\item \textbf{Attribute} authentication. Attribute = characteristic of an entity. Entities are often authenicated through authentication of some of its attributes. Do the communicating parties exhibit the characteristics they claim to have?
+				\item \textbf{Data-origin} authentication: does the data indeed originate from the specified source? Important to evaluate wether data is reliable (\textbf{Data Integrity} see \ref{sub:data-integrity}). Different from entity authentication: \textbf{no interaction with data source}.
+			\end{itemize}
+			\begin{figure}[h]
+				\centering
+				\begin{subfigure}{.40\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{images/authentication-threat.png}
+					\caption{Threat}
+					\label{fig:authentication-threat}
+				\end{subfigure}
+				\begin{subfigure}{.50\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{images/authentication-threat-solution.png}
+					\caption{Solution}
+					\label{fig:authentication-threat-solution}
+				\end{subfigure}
+			\end{figure}
 		% end sub:authentication
 
-        \subsection{Access Control/authorization} \label{sub:access-control-authorization}
-            \begin{itemize}
-                \item Determines which user may access which resource (data, computation time, etc.)
-                \item Requires \textbf{authentication of the entity} requesting access to these resources
-                \begin{itemize}
-                    \item System determines to what extent entity may access those resources
-                    \item Access rights may \textbf{depend on entity itself or its attributes}
-                \end{itemize}
-            \end{itemize}
+		\subsection{Access Control/authorization} \label{sub:access-control-authorization}
+			\begin{itemize}
+				\item Determines which user may access which resource (data, computation time, etc.)
+				\item Requires \textbf{authentication of the entity} requesting access to these resources
+				\begin{itemize}
+					\item System determines to what extent entity may access those resources
+					\item Access rights may \textbf{depend on entity itself or its attributes}
+				\end{itemize}
+			\end{itemize}
 
-            \subsubsection{Illustration 1: access control in OS} \label{subsub:access-control-in-os}
-                \begin{itemize}
-                    \item Authentication through login and password
-                    \item Access control determined for this user (entity)
-                        \begin{itemize}
-                            \item Full access to own files
-                            \item Limited acces to some other files
-                            \item No acces to other files
-                        \end{itemize}
-                    \item Access rights different from user to user
-                \end{itemize}
-            % end subsub:access-control-in-os
-            
-            \subsubsection{Illustration 2: access control to medical database} \label{subsub:access-control-to-medical-database}
-                \begin{itemize}
-                    \item Different rights for different types of Users
-                    \item Requires authentication based on specific \textbf{attributes}
-                    \item Access rights depend on attributes of the user
-                    \item Access rights different from user type to user type (\textbf{roles})
-                \end{itemize}
-            % end subsub:access-control-to-medical-database
+			\subsubsection{Illustration 1: access control in OS} \label{subsub:access-control-in-os}
+				\begin{itemize}
+					\item Authentication through login and password
+					\item Access control determined for this user (entity)
+						\begin{itemize}
+							\item Full access to own files
+							\item Limited acces to some other files
+							\item No acces to other files
+						\end{itemize}
+					\item Access rights different from user to user
+				\end{itemize}
+			% end subsub:access-control-in-os
+			
+			\subsubsection{Illustration 2: access control to medical database} \label{subsub:access-control-to-medical-database}
+				\begin{itemize}
+					\item Different rights for different types of Users
+					\item Requires authentication based on specific \textbf{attributes}
+					\item Access rights depend on attributes of the user
+					\item Access rights different from user type to user type (\textbf{roles})
+				\end{itemize}
+			% end subsub:access-control-to-medical-database
 
 		% end sub:access-control-authorization
 
-        \subsection{Data integrity} \label{sub:data-integrity}
-            \begin{itemize}
-                \item Guarantee that sent data and received data are identical
-                    \begin{itemize}
-                        \item No tampering with data en route
-                        \item Nothing was added
-                        \item Nothing was deleted
-                        \item Nothing was modified
-                        \item Nothing was replayed
-                    \end{itemize}
-                \item stronger requirement than data origin authentication: data originates from specified source \textbf{AND} isn't changed on the way
-                \item Threats
-                    \begin{itemize}
-                        \item Messages can be replayed
-                        \item Messages can be altered
-                        \item Cannot be solved with confidentiality (encryption): encrypted messages can also be replayed
-                    \end{itemize}
-            \end{itemize}
-            \subsubsection{Solution} \label{subsub:data-integrity-solution}
-                \begin{figure}[ht]
-                    \begin{minipage}{0.4\textwidth}
-                        A security footer containing a sequence number which can only be generated by the sender. This footer has to be generated based on the whole message to prevent tampering to the message itself.
-                        No need to encrypt the whole message for data integrity, but the message is not confidential if it isn't encrypted.
-                    \end{minipage}
-                    \begin{minipage}{0.58\textwidth}
-                        \centering
-                        \includegraphics[width=0.7\textwidth]{images/data-integrity-solution.png}
-                        \caption{Data integrity solution}
-                    \end{minipage}
-                \end{figure}
-            % end subsub:data-integrity-solution
+		\subsection{Data integrity} \label{sub:data-integrity}
+			\begin{itemize}
+				\item Guarantee that sent data and received data are identical
+					\begin{itemize}
+						\item No tampering with data en route
+						\item Nothing was added
+						\item Nothing was deleted
+						\item Nothing was modified
+						\item Nothing was replayed
+					\end{itemize}
+				\item stronger requirement than data origin authentication: data originates from specified source \textbf{AND} isn't changed on the way
+				\item Threats
+					\begin{itemize}
+						\item Messages can be replayed
+						\item Messages can be altered
+						\item Cannot be solved with confidentiality (encryption): encrypted messages can also be replayed
+					\end{itemize}
+			\end{itemize}
+			\subsubsection{Solution} \label{subsub:data-integrity-solution}
+				\begin{figure}[ht]
+					\begin{minipage}{0.4\textwidth}
+						A security footer containing a sequence number which can only be generated by the sender. This footer has to be generated based on the whole message to prevent tampering to the message itself.
+						No need to encrypt the whole message for data integrity, but the message is not confidential if it isn't encrypted.
+					\end{minipage}
+					\begin{minipage}{0.58\textwidth}
+						\centering
+						\includegraphics[width=0.7\textwidth]{images/data-integrity-solution.png}
+						\caption{Data integrity solution}
+					\end{minipage}
+				\end{figure}
+			% end subsub:data-integrity-solution
 		% end sub:data-integrity
 
-        \subsection{Non-repudiation} \label{sub:non-repudiation}
+		\subsection{Non-repudiation} \label{sub:non-repudiation}
+			\begin{itemize}
+				\item Sender can't deny having sent the message. Important for receiver. \textit{Prove order has been placed}
+				\item Receiver can't deny having received the message. Important for sender. \textit{Prove invoice has been paid}
+				\item Both sides need to communicate and `sign' their messages to guarantee non-repudiation for both sides.
+			\end{itemize}
 		% end sub:non-repudiation
 
 		\subsection{Availability} \label{sub:availability}
+			\begin{itemize}
+				\item System/service is accessible and usable for authorised Users
+				\item Security context $\leftrightarrow$ System design context
+			\end{itemize}
+			\subsubsection{Threats} \label{subsub:availability-threats}
+				\begin{itemize}
+					\item DoS: denial-of-service: target swamped by torrent of messages from attacker
+					\item DDos: distributed denial-of-service: target swamped by torrent of messages from multiple (and numerous) senders (botnets).
+				\end{itemize}
+			% end subsub:availability-threats
 		% end sub:availability
-
 	% end sec:security-goals
 
 	\section{Security Threats} \label{sec:security-threats}
-	% end sec:security-threats
+		Possible exam questions:
+		\begin{itemize} \bfseries
+			\item Explain the difference between confidentiality, authentication, acces control/authorization, data integrity, non-repudiation and availability.
+			\item Which of the above security goals are realized in the network protocols from Chapter 4?
+			\item Why are sequence numbers (or nonces) added to messages? Is it a good idea to use a time stamp for this purpose?
+			\item Which counter measurements can be taken against DoS and DDoS attacks?
+			\item Give 5 examples of active attacks that can be used to compromise the security of a network protocol.
+		\end{itemize}
+		\begin{itemize}
+			\item \textbf{Passive} attacks
+				\begin{itemize}
+					\item Eavesdropping
+					\item Traffic analysis
+				\end{itemize}
+			\item \textbf{Active} attacks
+				\begin{itemize}
+					\item Message insertion/modification
+					\item Impersonation/masquerade
+					\item Replay
+					\item DoS
+					\item Hijacking (taking over existing connection, where attacker replaces sender or receiver)
+				\end{itemize}
+		\end{itemize}
+		Hackers first seek a weak point in a network (for example through social engineering), second they wil use passive attacks to gain more information. Lastly they'll use active attacks.
 
+		\subsection{Possible attacks} \label{sub:security-threats-possible-attacks}
+			\begin{itemize}
+				\item Brute force: Trying all possible keys
+				\item Cryptanalysis: using knowledge about structure of algorithm, pairs of plaintext and secure messages in order to recover plaintext message or key itself, or to forge secure message
+				\item Side-channel attacks use physical properties or fault injection in order to recover plaintext or key
+					\begin{itemize}
+						\item \citetitle{Cade2014} \cite{Cade2014}
+						\item \citetitle{Anthony2013} \cite{Anthony2013}
+					\end{itemize}
+			\end{itemize}
+		% end sub:security-threats-possible-attacks
+
+		\subsection{Categories of attacks} \label{sub:categories-of-attacks}
+		\begin{itemize}
+			\item \textbf{Ciphertext only}: only secure message is known to attacker. Hardest one to break.
+			\item \textbf{Known plaintext}: one or more pairs obtained with a single key are known to attacker. Easier to break, but still safe.
+			\item \textbf{Chosen plaintext}: one or more pairs obtained with a single key, plaintext chosen by attacker. Harder to get, easier to break.
+			\item \textbf{Chosen ciphertext}: one or more pairs obtained with a single key, ciphertext chosen by attacker (plaintext can be garbage). Even harder to get, easier to break.
+			\item \textbf{Chosen text}: combination of chosen plaintext and chosen ciphertext.
+		\end{itemize}
+		% end sub:categories-of-attacks
+
+		\subsection{Desired degree of security?} \label{sub:desired-degree-of-security}
+			\begin{itemize}
+				\item Unconditionally secure is \textbf{not achieved by any practical security mechanism}.
+				\item Computationally secure means that the \textbf{time required for breaking is longer than the usefull lifetime} of the information, or that the \textbf{cost of breaking the encryption is larger than the value} of the information.
+			\end{itemize}
+		% end sub:desired-degree-of-security
+	% end sec:security-threats
 % end cha:basic-concepts
 
 \printbibliography
