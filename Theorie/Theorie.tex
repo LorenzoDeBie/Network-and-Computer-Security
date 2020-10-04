@@ -9,6 +9,8 @@
 \usepackage{subcaption}
 \usepackage{wrapfig}
 
+\usepackage{amsmath}
+
 \usepackage[
 	backend=biber,
 	style=ieee,
@@ -342,6 +344,117 @@
 	% end sec:security-threats
 % end cha:basic-concepts
 
+\chapter{Encryption Algorithms} \label{cha:encryption-algorithms}
+	\section{Steganography} \label{sec:steganography}
+		\begin{itemize}
+			\item Steganography: conceal the existence of the message.
+			\item Cryptography: render message unintelligible
+			\item As old as (or older) than cryptography. Used heavily in history
+			\item Alter digital files (audio, sound, text, pictures\dots) to a certain extend without losing their functionality. Exploiting the human inability to distinguish minor changes.
+		\end{itemize}
+		\subsection{Watermarking} \label{sub:watermarking}
+			Noise can be used as a watermark: the statistic distribution gives info about creator (and copyright information).
+			Try to implement the noise so that it cannot be removed or modified by any signal processing operation without degrading perceptual quality.
+			The watermark should be perceptually invisible. \\
+			Applications include:
+			\begin{itemize}
+				\item Covert information exchanges
+				\item Establish identity
+				\item Combat illegal copying
+			\end{itemize}
+			The biggest drawback is the high overhead to hide relatively few info bits.
+		% end sub:watermarking
+	% end sec:steganography
+
+	\section{Encryption througout history} \label{sec:encryption-throughout-history}
+		Encryption is an alternative for steganography.
+
+		\subsection{Substitution ciphers} \label{sub:substitution-ciphers}
+			\subsubsection{Monoalphabetic Substitution Ciphers} \label{subsub:monoalphabetic-substitution-ciphers}
+				Simplest version: shift letters $X$ places (Caesar Cipher: $X=3$). Disadvantage = only 25 keys ($X$ = 26 is no cipher), which is easily bruteforceable.
+				\begin{align*}
+					E(p) = (p + k)\ \%\ 26 \\
+					D(c) = (c - k)\ \%\ 26
+				\end{align*}
+				By shuffling the letters arbitrarily (each plaintext letter maps to a differnt random ciphertext letter) we can extend the key to 26 letters, which makes it not bruteforceable.
+				Still not fully secure because after analysing the letter frequencies it is relatively easy to decrypt the ciphertext.
+				\textbf{Monoalphabetic substitution ciphers do not change relative letter frequencies}.
+			% end subsub:monoalphabetic-substitution-ciphers
+
+			\subsubsection{Polyalphabetic Substitution Ciphers} \label{subsub:polyalphabetic-substitution-ciphers}
+				Further security improvements by using multiple cipher alphabets sequentially.
+				\begin{itemize}
+					\item \textbf{Alberti cipher}: Rotate an encyrption disk every few letters
+					\item \textbf{Vigenère cipher}
+					\begin{itemize}
+						\item More generic
+						\item key = multiple letters ($K = k_1 k_2 \dots k_d$)
+						\item $i^{th}$ letter specifies $i^{th}$ alphabet to use
+						\item repeat from start after d letters in message
+						\item Decryption simply works in reverse, and is thus relatively fast
+						\item Relativity safe, frequency analysis not possible anymore
+					\end{itemize}
+				\end{itemize}
+				Rotor machines such as the \textit{Hagelin machine} or \textit{enigme} are examples of polyalphabetic ciphers.
+			% end subsub:polyalphabetic-substitution-ciphers
+
+			\subsubsection{Digraph Substition Ciphers} \label{subsub:digraph-substitution-ciphers}
+				\textbf{Playfair cipher}: reduces predictability of language by encrypting multiple letters simultanuously. It uses a 5x5 matrix of letters based on a keyword (without duplicate letters).
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=0.8\textwidth]{images/playfair-cipher-encryption.png}
+					\caption{Playfair cipher encryption}
+				\end{figure}
+				Security is much improved since we have 676 (26x26) diagrams versus 26 for a monoalphabetic cipher. Another advantage is that this cipher is easier to use since no machinery is needed.
+				It was widely used eg. by US \& British military in WW1, but can now easily be broken, given a few hundred letters.
+			% end subsub:digraph-substitution-ciphers
+		% end sub:substitution-ciphers
+
+		\subsection{Transposition ciphers} \label{sub:transposition-ciphers}
+		Rearranging the letter order. Not susceptible to frequency analysis since ciphertext has same frequency distribution as plaintext. \\
+		Some examples:
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=0.5\textwidth]{images/scytale.png}\\
+			Roll of the ciphertext.
+			\caption{ScyTale}
+		\end{figure}
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=0.5\textwidth]{images/rail-fence-cipher.jpeg} \\
+			Write message letters diagonally over a number of rows, then read off cipher row by row.\\
+			defend the east wall $\rightarrow$ dnetleedheswlxftaax
+			\caption{Rail Fence cipher}
+		\end{figure}
+		\begin{figure}[h!t]
+			\centering
+			\includegraphics[width=0.5\textwidth]{images/columnar-transposition-cipher.png} \\
+			A more complex transposition. Write letters of message out in rows over a specified number of columns, then reorder the columns according to some key before reading off the columns.
+			\caption{Columnar Transposition Cipher}
+		\end{figure}
+		% end sub:transposition-ciphers
+
+		\subsection{Combination ciphers} \label{sub:combination-ciphers}
+		Both substitution and transposition have frequency and pattern analysis as vulnerabilities respectively. What about multiple ciphers in succession?
+		\begin{itemize}
+			\item Multiple substitution just make a more complex substitution
+			\item Multiple Transpositions just make a more complex transposition
+			\item \textbf{Substitution followed by a transposition makes a new much harder cipher}
+		\end{itemize}
+		% end sub:combination-ciphers
+	% end sec:encryption-throughout-history
+
+	\section{Modern cryptography} \label{sec:modern-cryptography}
+		\subsection{Symmetric encryption algorithms} \label{sub:symmetric-encryption-algorithms}
+		% end sub:symmetric-encryption-algorithms
+
+		\subsection{Asymmetric encryption algorithms} \label{sub:asymetric-encryption-algorithms}
+		% end sub:asymetric-encryption-algorithms
+
+		\subsection{HASH algorithms} \label{sub:hash-algorithms}
+		% end sub:hash-algorithms
+	% end sec:modern-cryptography
+% end cha:encryption-algorithms
 \printbibliography
 
 \end{document}
